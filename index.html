@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>عبدالرحمن عوض </title>
+  <style>
+    :root {
+      --primary: #6C63FF;
+      --primary-dark: #564FD8;
+      --secondary: #FF6584;
+      --accent: #36D1DC;
+      --dark: #1A1A2E;
+      --darker: #16213E;
+      --light: #FFFFFF;
+      --gray: #8A8A9D;
+      --gray-light: #F0F0F5;
+      --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+      --gradient-secondary: linear-gradient(135deg, var(--secondary), #FF9A8B);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Tajawal', 'Segoe UI', sans-serif;
+      background-color: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* تصميم الشريط العلوي */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 26, 46, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--gradient);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* قسم الهيدر */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+      z-index: -2;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 70%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(108, 99, 255, 0.1) 0%, rgba(108, 99, 255, 0) 70%);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(54, 209, 220, 0.1) 0%, rgba(54, 209, 220, 0) 70%);
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero-text h1 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--light);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-image {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-card {
+      width: 350px;
+      height: 450px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--gradient);
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .profile-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-info p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* الأقسام العامة */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+
+    .section-header p {
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* قسم المهارات */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1.5rem;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .skill-card p {
+      color: var(--gray);
+    }
+
+    /* قسم المشاريع */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+      transform: translateY(0);
+      animation: fadeInUp 0.8s ease-in-out forwards;
+    }
+
+    .project-card:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .project-card:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .project-card:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .project-card:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-img {
+      height: 200px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .project-content p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .project-link:hover {
+      gap: 0.8rem;
+    }
+
+    /* قسم الشبكات */
+    .networks-content {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .networks-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .networks-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .analogy {
+      background: rgba(108, 99, 255, 0.1);
+      border-right: 4px solid var(--primary);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    .analogy h4 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .networks-content ul {
+      padding-right: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .networks-content li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* قسم التواصل */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1.5rem;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    .contact-card p {
+      color: var(--gray);
+    }
+
+    /* الفوتر */
+    footer {
+      background: var(--dark);
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .copyright {
+      color: var(--gray);
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Scroll animation */
+    .scroll-animation {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scroll-animation.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* التجاوب مع الشاشات المختلفة */
+    @media (max-width: 992px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-text h1 {
+        margin-top: 150px;
+        font-size: 2.3rem;
+      }
+
+      .hero-btns {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .section {
+        padding: 4rem 1rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        width: 300px;
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.5rem;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .networks-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- الشريط العلوي -->
+  <nav class="navbar">
+    <div class="logo">AR</div>
+    <div class="nav-links">
+      <a href="#about">خطاب تعريفي</a>
+      <a href="#skills">المهارات</a>
+      <a href="#projects">أعمال من الكورس</a>
+      <a href="#readme"> نص لجمهور غير تقني </a>
+      <a href="#self-reflection">تامل </a>
+   
+    </div>
+
+    <button class="menu-toggle">☰</button>
+  </nav>
+
+  <!-- قسم الهيدر -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>مرحباً، أنا <span>عبدالرحمن عوض</span></h1>
+        <p> مهندس حاسوب شغوف بكل م يتعلق بالتقنية والبرمجة </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">اعمال من الكورس </a>
+          <a href="#contact" class="btn btn-secondary">تواصل معي</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="profile-card">
+          <div class="profile-img">
+            <img src="/assets/images/profile-photo.jpg" alt="صورة عبدالرحمن">
+          </div>
+          <div class="profile-info">
+            <h2>عبدالرحمن عوض</h2>
+            <p>مهندس حاسوب  </p>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم عني -->
+  <section id="about" class="section">
+    <div class="section-header">
+      <h2>خطاب تعريفي</h2>
+      <p>نبذة بسيطه عن عبد الرحمن </p>
+    </div>
+    <div class="networks-content">
+      <p>أنا عبدالرحمن عوض طالب بقسم الحاسوب بكلية الهندسة في جامعة النيلين. أمتلك خبرة في العمل على مشاريع برمجية متنوعة تشمل تطوير تطبيقات ويب متقدمة، أنظمة إدارة البيانات، وحلول تقنية مبتكرة.</p>
+      <p>أؤمن بأهمية الكود النظيف والواجهات المستجيبة التي تضمن تجربة مستخدم مميزة. أستمتع بتحويل الأفكار المعقدة إلى حلول برمجية بسيطة وفعالة، وأعمل دائماً على تطوير مهاراتي وتعلم التقنيات الحديثة.</p>
+    </div>
+  </section>
+
+  <!-- قسم المهارات -->
+  <section id="skills" class="section scroll-animation">
+    <div class="section-header">
+      <h2>المهارات</h2>
+      <p>المهارات  الشخصية</p>
+    </div>
+    <div class="skills-grid">
+    
+      <div class="skill-card">
+        <div class="skill-icon">⚡</div>
+        <h3>العمل تحت الضغط</h3>
+        <p>أتميز بالقدرة على العمل بكفاءة عالية تحت الضغط مع الحفاظ على جودة الأداء.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🚀</div>
+        <h3>سريع التعلم</h3>
+        <p>أمتلك مهارة التعلم السريع والتكيف مع التقنيات الجديدة في وقت قصير.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤝</div>
+        <h3>التواصل الفعال</h3>
+        <p>أمتلك مهارة التواصل الفعال مع الفريق والعملاء لضمان تحقيق الأهداف المشتركة.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🎯</div>
+        <h3>إدارة الوقت</h3>
+        <p>أتميز بقدرتي على تنظيم المهام وإدارة الوقت لتحقيق الإنتاجية العالية.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم المشاريع -->
+  <section id="projects" class="section scroll-animation">
+    <div class="section-header">
+      <h2>مشاريعي</h2>
+      <p>أبرز المشاريع التي عملت عليها في هذا الفصل الدراسي </p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img">📘</div>
+        <div class="project-content">
+          <h3>دليل المستخدم – تطبيق ترحال</h3>
+          <p>دليل تفاعلي مع أمثلة عملية لتطبيق ترحال للسياحة والسفر</p>
+          <a href="/assets/files/torhal-user-guide.pdf" class="project-link">عرض المشروع →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img">📄</div>
+        <div class="project-content">
+          <h3>نظام إدارة العيادة</h3>
+          <p>نظام متكامل لإدارة العيادات الطبية وحجز المواعيد</p>
+          <a href="/assets/files/clinic-system.pdf" class="project-link">عرض المشروع →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img">🧭</div>
+        <div class="project-content">
+          <h3>تحليل الجمهور المستهدف</h3>
+          <p>ورقة عمل متكاملة لتحليل شريحة الجمهور والتسويق</p>
+          <a href="/assets/files/audience-profile.pdf" class="project-link">عرض المشروع →</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img">📄</div>
+        <div class="project-content">
+          <h3>ملف README الاحترافي</h3>
+          <p>توثيق كامل للمشروع مع أمثلة عملية.</p>
+          <a href="/assets/files/README.md" class="project-link">عرض المشروع →</a>
+        </div>
+      </div>
+
+    
+    </div>
+  </section>
+
+ <section id="readme" class="readme-info">
+  <div class="section-header">
+      <h2>مقال لجمهور غير تقني </h2>
+      <p>  شرح ملف توثيق المشاريع البرمجي README.md</p>
+    </div>
+  <style>
+    /* .readme-info {
+      padding: 60px 2rem;
+      background: linear-gradient(135deg, #15586d 0%, #0d1528 100%);
+      color: #fff;
+      line-height: 1.7;
+      position: relative;
+      overflow: hidden;
+    } */
+    
+    /* .readme-info::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 70%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(62, 61, 85, 0.08) 0%, rgba(108, 99, 255, 0) 70%);
+      z-index: 0;
+    }
+     */
+    .readme-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .readme-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.8s ease forwards;
+      backdrop-filter: blur(10px);
+    }
+    
+    .readme-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6C63FF, #36D1DC);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .readme-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(135deg, #6C63FF, #36D1DC);
+      border-radius: 2px;
+    }
+    
+    .readme-text {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #e9eef5;
+    }
+    
+    .readme-list {
+      margin: 0;
+      padding: 0 0 0 1.5rem;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .readme-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+    
+    .readme-list li::marker {
+      color: #6C63FF;
+    }
+/*     
+    .readme-highlight {
+      background: rgba(108, 99, 255, 0.15);
+      border-right: 3px solid #6C63FF;
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    } */
+    
+    .readme-highlight p {
+      margin: 0;
+      font-style: italic;
+    }
+    
+    .readme-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    
+    .readme-img-container {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      position: relative;
+    }
+    
+    .readme-img-container:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    
+    .readme-img-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    
+    .readme-img-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    .img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 18, 32, 0.85);
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #e9eef5;
+      backdrop-filter: blur(5px);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width: 992px) {
+      .readme-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .readme-image {
+        order: -1;
+      }
+      
+      .readme-img-container {
+        max-width: 400px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .readme-info {
+        padding: 40px 1rem;
+      }
+      
+      .readme-box {
+        padding: 1.5rem;
+      }
+      
+      .readme-title {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+
+  <div class="readme-container">
+    <div class="readme-box">
+      <h2 class="readme-title">توثيق المشاريع البرمجية</h2>
+      
+      <p class="readme-text">
+        ملف <strong>README</strong> هو الواجهة الأولى لأي مشروع برمجي، وهو الصفحة التي يخاطب بها صاحب المشروع أي شخص يشاهد عمله لأول مرة. يعتبر هذا الملف بطاقة التعريف الرقمية للمشروع.
+      </p>
+      
+      <div class="readme-highlight">
+        <p>"ملف README الجيد هو الذي يجيب على أسئلة الزوار قبل أن يطرحوها"</p>
+      </div>
+      
+      <p class="readme-text">
+        ملف README ليس وثيقة تقنية معقدة، بل مقدمة مبسطة تشرح فكرة المشروع، والغرض منه، وطريقة استخدامه. وجود هذا الملف يساعد الناس على فهم المشروع دون الحاجة لخبرة تقنية متقدمة.
+      </p>
+      
+      <p class="readme-text">
+        تخيّل أنك تقرأ وصف منتج قبل شرائه — هذا بالضبط ما يقوم به ملف README، فهو يجيب الأسئلة الأساسية التي قد تدور في ذهن أي زائر:
+      </p>
+      
+      <ul class="readme-list">
+        <li><strong>ما الذي يقدّمه المشروع؟</strong> - نظرة عامة عن المشروع ووظائفه الأساسية</li>
+        <li><strong>لماذا تم بناؤه؟</strong> - المشكلة التي يحلها والقيمة المضافة</li>
+        <li><strong>كيف يمكن تجربته أو الاستفادة منه؟</strong> - خطوات بسيطة لتجربة المشروع</li>
+        <li><strong>كيف يتم تثبيته وتشغيله؟</strong> - دليل التثبيت للمطورين</li>
+        <li><strong>كيف يمكن المساهمة في المشروع؟</strong> - إرشادات للمساهمين المحتملين</li>
+      </ul>
+      
+      <p class="readme-text">
+        ملف README الجيد يتميز بكونه واضحاً، شاملاً، وسهل القراءة. يجب أن يحتوي على:
+      </p>
+      
+      <ul class="readme-list">
+        <li>عنوان وصورة توضيحية للمشروع</li>
+        <li>وصف مختصر وواضح للمشروع</li>
+        <li>ميزات رئيسية وقدرات المشروع</li>
+        <li>متطلبات التشغيل والتثبيت</li>
+        <li>أمثلة للاستخدام مع كود توضيحي</li>
+        <li>معلومات الترخيص وحقوق الملكية</li>
+      </ul>
+      
+      <p class="readme-text">
+        لذلك يُعد هذا الملف من أهم عناصر أي مشروع؛ فهو يجعل العمل أكثر وضوحاً، وأكثر احترافية، ويسهّل على الجميع فهم الفكرة دون الدخول في تفاصيل تقنية معقدة.
+      </p>
+    </div>
+    
+    <div class="readme-image">
+      <div class="readme-img-container">
+        <img src="/assets/images/readme.png" alt="مثال على ملف README احترافي">
+        <div class="img-caption">مثال على ملف README احترافي مع تنسيق واضح</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- قسم تأمل -->
+  <section id="self-reflection" class="section">
+    <style>
+      .reflection-content {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 2rem;
+        align-items: center;
+        direction: ltr; /* force left column = text, right column = image */
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .reflection-text {
+        direction: rtl; /* keep Arabic text direction */
+        text-align: right;
+        color: var(--gray);
+        line-height: 1.8;
+      }
+      .reflection-image {
+        text-align: center;
+      }
+      .reflection-image img {
+        max-width: 100%;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        display: inline-block;
+      }
+      @media (max-width: 768px) {
+        .reflection-content {
+          grid-template-columns: 1fr;
+          direction: rtl;
+        }
+        .reflection-image {
+          margin-top: 1.5rem;
+        }
+      }
+    </style>
+
+    <div class="section-header">
+      <h2>تأمل</h2>
+      <p>لحظات من التفكير والتأمل في مسيرتي المهنية والشخصية</p>
+    </div>
+
+    <div class="reflection-content">
+      <div class="reflection-text">
+        <p>أحياناً تبدو الرحلة أمامي كخط متعرج لا يعرف الاستقامة، وأدرك أن كل منعطف فيها كان درساً متخفياً. لا أخشى الاعتراف بأنني لم أكن أعرف كل الإجابات؛ بل أحتفي بالأسئلة التي أجبرتني على البحث والتراجع والتعلم من جديد.</p>
+        <p>الفشل ليس نهاية بل مرآة صادقة تُظهر مكامن الضعف وتفتح باب التواضع. عندما أصلب عزيمتي من جديد، يصبح الخوف دافعاً للتجربة وليس قيداً يمنع الخطوة التالية. في صمت تلك اللحظات أجد صوت الفضول يهمس: "ماذا لو جربت مرة أخرى بشكل مختلف؟".</p>
+        <p>التأمل علمني أن قيمة الإنجاز لا تقاس بسرعة الوصول وحدها، بل بالاتساق والنية وراء كل سطر كُتب وكل مشكلة حُلّت. التقدم الحقيقي هو مزيج من الصبر والالتزام والقدرة على مراجعة الذات بصدق.</p>
+        <p>أعمل لأبني مساراً يليق بقيمي: أن أترك أثراً مفيداً، أن أعلّم قبل أن أطالب، وأن أستمر في التعلم كواجب وشغف. كل صباح جديد فرصة لأقترب بشغف من هدف أكبر من مجرد نجاح شخصي — هدف يضيف قيمة للآخرين ويشعرني بأن ما أفعله له معنى.</p>
+        <p style="margin-top: 1rem; color: var(--light); font-weight: 700;">التأمل ليس هروباً من الواقع بل نافذة نطل منها على ما نريد أن نصبح عليه.</p>
+      </div>
+
+      <div class="reflection-image">
+        <img src="/assets/images/meditation.jpg" alt="صورة تأمل">
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم التواصل -->
+  <section id="contact" class="section">
+    <style>
+      /* تحسين شكل الروابط في بطاقة التواصل */
+      .contact-card p { margin: 0; }
+      .contact-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.45rem 0.9rem;
+        border-radius: 999px;
+        text-decoration: none;
+        color: var(--light);
+        background: rgba(108, 99, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+        direction: ltr; /* keep URLs readable */
+        font-weight: 700;
+      }
+
+      .contact-link:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(108, 99, 255, 0.12);
+        color: var(--primary);
+      }
+
+      /* subtle underline grow on hover */
+      .contact-link::after {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 0;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        transition: width 0.28s ease;
+        margin-top: 6px;
+      }
+      .contact-link:hover::after { width: 100%; }
+
+      /* make sure long URLs wrap nicely */
+      .contact-link .url {
+        overflow-wrap: anywhere;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* smaller screens: center links */
+      @media (max-width: 768px) {
+        .contact-card { text-align: center; }
+        .contact-link { justify-content: center; }
+      }
+    </style>
+
+    <div class="section-header">
+      <h2>تواصل معي</h2>
+      <p>لا تتردد في التواصل معي لأي استفسار أو فرصة عمل</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <h3>البريد الإلكتروني</h3>
+        <p>
+          <a class="contact-link" href="mailto:gailyjr68@gmail.com" aria-label="بريد إلكتروني">
+            <span class="url">gailyjr68@gmail.com</span>
+          </a>
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-icon">🌐</div>
+        <h3>جيت هب</h3>
+        <p>
+          <a class="contact-link" href="https://github.com/Abdrlrhman" target="_blank" rel="noopener noreferrer" aria-label="جيت هب" dir="ltr">
+            <span class="url">github.com/Abdrlrhman</span>
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- الفوتر -->
+  <footer>
+    <div class="footer-content">
+ 
+     
+      <div class="copyright">
+        © 2025 All rights reserved | Abdulrahman Awad Mohamed
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating shapes -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <script>
+    // تفعيل القائمة المتنقلة
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+      });
+    }
+
+    // إغلاق القائمة عند النقر على رابط في الشاشات الصغيرة
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+    navLinksItems.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.style.display = 'none';
+        }
+      });
+    });
+
+    // تأثيرات التمرير السلس
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Scroll animation logic
+    const scrollElements = document.querySelectorAll('.scroll-animation');
+
+    const elementInView = (el, offset = 100) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return (
+        elementTop <=
+        (window.innerHeight || document.documentElement.clientHeight) - offset
+      );
+    };
+
+    const displayScrollElement = (element) => {
+      element.classList.add('visible');
+    };
+
+    const hideScrollElement = (element) => {
+      element.classList.remove('visible');
+    };
+
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el, 100)) {
+          displayScrollElement(el);
+        } else {
+          hideScrollElement(el);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScrollAnimation);
+  </script>
+</body>
+</html>
